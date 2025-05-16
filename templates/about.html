@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Про нас - Школа "Знання"
+{% endblock %}
+
+{% block content  %} 
+<header class="page-header">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-white">Про нашу школу</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Головна</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Про нас</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="about-img">
+                        <img src="{{ url_for('static', filename='images/school.jpg') }}" alt="Школа Знання" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-title mb-4">
+                        <h2>Наша історія</h2>
+                        <div class="line"></div>
+                    </div>
+                    <p>Школа "Знання" була заснована в 1995 році групою ентузіастів-педагогів, які мріяли створити навчальний заклад нового типу. З самого початку нашою метою було забезпечення високоякісної освіти, яка поєднує традиційні методи навчання з інноваційними підходами.</p>
+                    <p>За роки свого існування школа "Знання" перетворилася на один з провідних навчальних закладів міста, який славиться своїми випускниками та високими академічними досягненнями.</p>
+                    <p>Сьогодні ми продовжуємо розвиватися, впроваджуючи нові освітні технології та методики, щоб забезпечити нашим учням найкращі можливості для навчання та розвитку.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Vision -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="section-title mb-4">
+                                <h2>Наша місія</h2>
+                                <div class="line"></div>
+                            </div>
+                            <p>Місія школи "Знання" полягає в тому, щоб забезпечити кожному учню якісну освіту, яка відповідає сучасним вимогам та стандартам, а також створити сприятливе середовище для всебічного розвитку особистості.</p>
+                            <p>Ми прагнемо виховати відповідальних, творчих та успішних громадян, які зможуть реалізувати свій потенціал та зробити позитивний внесок у розвиток суспільства.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="section-title mb-4">
+                                <h2>Наше бачення</h2>
+                                <div class="line"></div>
+                            </div>
+                            <p>Ми бачимо школу "Знання" як інноваційний освітній центр, який постійно розвивається та адаптується до змін у світі, зберігаючи при цьому свої основні цінності та принципи.</p>
+                            <p>Наше бачення - стати школою, яка не лише дає знання, але й формує навички критичного мислення, творчості, співпраці та комунікації, необхідні для успіху в 21 столітті.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Наші цінності</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Принципи, якими ми керуємося у нашій роботі</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="value-card text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-star text-primary fa-3x"></i>
+                        </div>
+                        <h4>Досконалість</h4>
+                        <p>Ми прагнемо до найвищих стандартів у всьому, що робимо, постійно вдосконалюючи наші методи та підходи до навчання.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-heart text-primary fa-3x"></i>
+                        </div>
+                        <h4>Повага</h4>
+                        <p>Ми поважаємо індивідуальність кожного учня, визнаючи його унікальні здібності, потреби та інтереси.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-lightbulb text-primary fa-3x"></i>
+                        </div>
+                        <h4>Інновації</h4>
+                        <p>Ми відкриті до нових ідей та підходів, постійно шукаємо інноваційні методи навчання та розвитку.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-hands-helping text-primary fa-3x"></i>
+                        </div>
+                        <h4>Співпраця</h4>
+                        <p>Ми віримо в силу співпраці між учнями, вчителями та батьками для досягнення спільних освітніх цілей.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-balance-scale text-primary fa-3x"></i>
+                        </div>
+                        <h4>Відповідальність</h4>
+                        <p>Ми виховуємо відповідальність за власні дії та рішення, а також за вплив, який ми маємо на оточуючих.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-seedling text-primary fa-3x"></i>
+                        </div>
+                        <h4>Розвиток</h4>
+                        <p>Ми заохочуємо постійний особистісний та професійний розвиток усіх членів нашої шкільної спільноти.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Facilities -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Наші приміщення та обладнання</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Сучасна інфраструктура для комфортного навчання</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <img src="{{ url_for('static', filename='images/classroom.jpg') }}" class="card-img-top" alt="Класні кімнати">
+                        <div class="card-body">
+                            <h5 class="card-title">Сучасні класні кімнати</h5>
+                            <p class="card-text">Наші класні кімнати обладнані сучасними технологіями, включаючи інтерактивні дошки, проектори та комп'ютери.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <img src="{{ url_for('static', filename='images/science_room.jpg') }}" class="card-img-top" alt="Лабораторії">
+                        <div class="card-body">
+                            <h5 class="card-title">Наукові лабораторії</h5>
+                            <p class="card-text">Спеціалізовані лабораторії для фізики, хімії та біології, де учні можуть проводити експерименти та дослідження.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <img src="{{ url_for('static', filename='images/library.png') }}" class="card-img-top" alt="Бібліотека">
+                        <div class="card-body">
+                            <h5 class="card-title">Бібліотека та медіатека</h5>
+                            <p class="card-text">Простора бібліотека з великою колекцією книг, журналів та електронних ресурсів для навчання та дослідження.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <img src="{{ url_for('static', filename='images/gym.jpg') }}" class="card-img-top" alt="Спортзал">
+                        <div class="card-body">
+                            <h5 class="card-title">Спортивні об'єкти</h5>
+                            <p class="card-text">Сучасний спортивний зал, футбольне поле, баскетбольний та волейбольний майданчики для фізичного розвитку учнів.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <img src="{{ url_for('static', filename='images/canteen.jpg') }}" class="card-img-top" alt="Їдальня">
+                        <div class="card-body">
+                            <h5 class="card-title">Шкільна їдальня</h5>
+                            <p class="card-text">Простора їдальня, де учні можуть насолоджуватися здоровими та смачними стравами, приготованими нашими кухарями.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <img src="{{ url_for('static', filename='images/assembly_hall.jpg') }}" class="card-img-top" alt="Актова зала">
+                        <div class="card-body">
+                            <h5 class="card-title">Актова зала</h5>
+                            <p class="card-text">Сучасна актова зала для проведення шкільних заходів, концертів, вистав та презентацій.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Наші досягнення</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Ми пишаємося успіхами наших учнів та школи</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="achievement-card p-4 border-start border-primary border-5">
+                        <h4>Високі результати ЗНО</h4>
+                        <p>Наші випускники регулярно показують високі результати на зовнішньому незалежному оцінюванні, що дозволяє їм вступати до найкращих університетів України та світу.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="achievement-card p-4 border-start border-primary border-5">
+                        <h4>Перемоги на олімпіадах</h4>
+                        <p>Учні нашої школи щороку здобувають призові місця на міських, обласних та всеукраїнських олімпіадах з різних предметів.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="achievement-card p-4 border-start border-primary border-5">
+                        <h4>Міжнародні проекти</h4>
+                        <p>Школа бере активну участь у міжнародних освітніх проектах та обмінах, що дозволяє нашим учням розширювати свій світогляд та вдосконалювати знання іноземних мов.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="achievement-card p-4 border-start border-primary border-5">
+                        <h4>Інноваційні освітні програми</h4>
+                        <p>Наша школа розробила та впровадила кілька інноваційних освітніх програм, які отримали визнання на національному рівні.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-3 col-6 mb-4 text-center">
+                    <div class="counter">
+                        <i class="fas fa-user-graduate text-primary mb-3 fa-3x"></i>
+                        <h2 class="counter-number">1500+</h2>
+                        <p>Випускників</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 text-center">
+                    <div class="counter">
+                        <i class="fas fa-trophy text-primary mb-3 fa-3x"></i>
+                        <h2 class="counter-number">250+</h2>
+                        <p>Нагород</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 text-center">
+                    <div class="counter">
+                        <i class="fas fa-chalkboard-teacher text-primary mb-3 fa-3x"></i>
+                        <h2 class="counter-number">50+</h2>
+                        <p>Вчителів</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 text-center">
+                    <div class="counter">
+                        <i class="fas fa-calendar-check text-primary mb-3 fa-3x"></i>
+                        <h2 class="counter-number">28</h2>
+                        <p>Років досвіду</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

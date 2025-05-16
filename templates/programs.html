@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Освітні програми - Школа "Знання"
+{% endblock %}
+
+{% block content  %} 
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-white">Освітні програми</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Головна</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Програми</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Programs Introduction -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="section-title mb-4">
+                        <h2>Наші освітні програми</h2>
+                        <div class="line"></div>
+                    </div>
+                    <p>Школа "Знання" пропонує різноманітні освітні програми, розроблені з урахуванням сучасних вимог та стандартів. Наші програми спрямовані на всебічний розвиток учнів, формування ключових компетентностей та підготовку до успішного майбутнього.</p>
+                    <p>Ми поєднуємо традиційні методи навчання з інноваційними підходами, використовуємо сучасні технології та створюємо сприятливе середовище для навчання та розвитку кожного учня.</p>
+                    <p>Наші програми розроблені досвідченими педагогами та експертами в галузі освіти, постійно оновлюються та вдосконалюються відповідно до нових освітніх тенденцій та потреб учнів.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="programs-img">
+                        <img src="{{ url_for('static', filename='images/prog_school.jpg') }}" alt="Освітні програми" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Programs -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Основні програми</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Наші основні освітні програми для різних вікових груп</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="program-icon mb-3">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <h4 class="card-title">Початкова школа (1-4 класи)</h4>
+                            <p class="card-text">Програма початкової школи спрямована на формування базових навичок читання, письма, математики та пізнання світу. Ми використовуємо ігрові методи навчання, розвиваємо творчість та критичне мислення.</p>
+                            <ul class="list-unstyled mt-3">
+                                <li><i class="fas fa-check text-success me-2"></i> Розвиток мовленнєвих навичок</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Основи математики та логіки</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Пізнання навколишнього світу</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Творчий розвиток</li>
+                            </ul>
+                            <a href="#" class="btn btn-outline-primary mt-3">Детальніше</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="program-icon mb-3">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <h4 class="card-title">Середня школа (5-9 класи)</h4>
+                            <p class="card-text">Програма середньої школи поглиблює знання з основних предметів, розвиває аналітичні здібності та самостійність. Учні вивчають широкий спектр дисциплін та розвивають ключові компетентності.</p>
+                            <ul class="list-unstyled mt-3">
+                                <li><i class="fas fa-check text-success me-2"></i> Поглиблене вивчення мов</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Математика та природничі науки</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Історія та суспільствознавство</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Інформаційні технології</li>
+                            </ul>
+                            <a href="#" class="btn btn-outline-primary mt-3">Детальніше</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="program-icon mb-3">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h4 class="card-title">Старша школа (10-11 класи)</h4>
+                            <p class="card-text">Програма старшої школи готує учнів до ЗНО та вступу до вищих навчальних закладів. Учні обирають профільні предмети відповідно до своїх інтересів та майбутньої професії.</p>
+                            <ul class="list-unstyled mt-3">
+                                <li><i class="fas fa-check text-success me-2"></i> Профільне навчання</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Підготовка до ЗНО</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Професійна орієнтація</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Дослідницька діяльність</li>
+                            </ul>
+                            <a href="#" class="btn btn-outline-primary mt-3">Детальніше</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialized Programs -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Спеціалізовані програми</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Додаткові освітні програми для поглибленого вивчення окремих предметів</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="specialized-program p-4 bg-light rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="program-icon me-3">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h4 class="mb-0">Математичний напрямок</h4>
+                        </div>
+                        <p>Програма для учнів, які цікавляться математикою та точними науками. Включає поглиблене вивчення математики, фізики, інформатики та участь у математичних олімпіадах і конкурсах.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">Алгебра</span>
+                            <span class="badge bg-primary me-2">Геометрія</span>
+                            <span class="badge bg-primary me-2">Фізика</span>
+                            <span class="badge bg-primary">Програмування</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="specialized-program p-4 bg-light rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="program-icon me-3">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h4 class="mb-0">Гуманітарний напрямок</h4>
+                        </div>
+                        <p>Програма для учнів з інтересом до мов, літератури та гуманітарних наук. Включає поглиблене вивчення української та іноземних мов, літератури, історії та суспільствознавства.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">Українська мова</span>
+                            <span class="badge bg-primary me-2">Англійська мова</span>
+                            <span class="badge bg-primary me-2">Література</span>
+                            <span class="badge bg-primary">Історія</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="specialized-program p-4 bg-light rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="program-icon me-3">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h4 class="mb-0">Природничий напрямок</h4>
+                        </div>
+                        <p>Програма для учнів, які цікавляться природничими науками. Включає поглиблене вивчення біології, хімії, географії та екології, а також практичні лабораторні роботи та польові дослідження.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">Біологія</span>
+                            <span class="badge bg-primary me-2">Хімія</span>
+                            <span class="badge bg-primary me-2">Географія</span>
+                            <span class="badge bg-primary">Екологія</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="specialized-program p-4 bg-light rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="program-icon me-3">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h4 class="mb-0">ІТ напрямок</h4>
+                        </div>
+                        <p>Програма для учнів, які цікавляться інформаційними технологіями. Включає вивчення програмування, веб-розробки, робототехніки та основ штучного інтелекту.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">Програмування</span>
+                            <span class="badge bg-primary me-2">Веб-розробка</span>
+                            <span class="badge bg-primary me-2">Робототехніка</span>
+                            <span class="badge bg-primary">Штучний інтелект</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Teaching Methods -->
+    <section class="py-5 bg-light">
+        <div class="container ">
+            <div class="section-title text-center mb-5">
+                <h2>Наші методи навчання</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Інноваційні підходи для ефективного навчання</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="method-card text-center p-4">
+                        <div class="method-icon mb-3">
+                            <i class="fas fa-users text-primary fa-3x"></i>
+                        </div>
+                        <h4>Інтерактивне навчання</h4>
+                        <p>Активна взаємодія між учнями та вчителями, групова робота, дискусії та проекти.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="method-card text-center p-4">
+                        <div class="method-icon mb-3">
+                            <i class="fas fa-project-diagram text-primary fa-3x"></i>
+                        </div>
+                        <h4>Проектне навчання</h4>
+                        <p>Розвиток навичок через роботу над реальними проектами та вирішення практичних завдань.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="method-card text-center p-4">
+                        <div class="method-icon mb-3">
+                            <i class="fas fa-laptop text-primary fa-3x"></i>
+                        </div>
+                        <h4>Цифрові технології</h4>
+                        <p>Використання сучасних технологій, онлайн-ресурсів та інтерактивних платформ у навчанні.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="method-card text-center p-4">
+                        <div class="method-icon mb-3">
+                            <i class="fas fa-user-cog text-primary fa-3x"></i>
+                        </div>
+                        <h4>Індивідуальний підхід</h4>
+                        <p>Врахування індивідуальних особливостей, здібностей та потреб кожного учня.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Часті запитання</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Відповіді на поширені запитання про наші освітні програми</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Як обрати відповідну програму для моєї дитини?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Для вибору відповідної програми ми рекомендуємо врахувати інтереси, здібності та потреби вашої дитини. Ви можете записатися на консультацію з нашими педагогами, які допоможуть визначити найбільш підходящу програму. Також ми проводимо дні відкритих дверей, де ви можете ознайомитися з усіма програмами та поспілкуватися з вчителями.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Чи можна змінити програму навчання протягом навчального року?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Так, за певних умов можна змінити програму навчання протягом навчального року. Це питання розглядається індивідуально, враховуючи особливості дитини та її адаптаційні можливості. Для зміни програми необхідно звернутися до класного керівника або адміністрації школи.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Які додаткові можливості надають спеціалізовані програми?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Спеціалізовані програми надають можливість поглибленого вивчення окремих предметів, участі в олімпіадах, конкурсах та проектах відповідного напрямку. Учні також мають доступ до додаткових ресурсів, спеціалізованих лабораторій та обладнання. Крім того, ці програми часто включають зустрічі з експертами, екскурсії та практичні заняття.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Як оцінюється прогрес учнів у навчанні?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Ми використовуємо комплексну систему оцінювання, яка включає не лише традиційні оцінки, але й формувальне оцінювання, портфоліо учня, проектні роботи та самооцінювання. Регулярно проводяться батьківські збори та індивідуальні консультації, де обговорюється прогрес учня та напрямки подальшого розвитку.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Чи є можливість індивідуального навчання?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Так, ми пропонуємо можливості для індивідуального навчання учнів з особливими освітніми потребами або для тих, хто не може відвідувати школу з певних причин. Індивідуальне навчання організовується за окремим графіком та адаптованою програмою. Для отримання детальнішої інформації, будь ласка, зверніться до адміністрації школи.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

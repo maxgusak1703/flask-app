@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Школа "Знання" - Головна сторінка
+{% endblock %}
+
+{% block content  %} 
+<header class="hero-section">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Ласкаво просимо до школи "Знання"</h1>
+                    <p class="lead mb-4">Ми створюємо середовище, де кожен учень може розкрити свій потенціал та досягти успіху</p>
+                    <div class="d-flex">
+                        <a href="{{ url_for('about') }}" class="btn btn-primary me-3">Дізнатися більше</a>
+                        <a href="{{ url_for('contacts') }}" class="btn btn-outline-light">Зв'язатися з нами</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="feature-box text-center p-4">
+                        <i class="fas fa-book-reader text-primary mb-3 fa-3x"></i>
+                        <h4>Якісна освіта</h4>
+                        <p>Висококваліфіковані вчителі та сучасні методики навчання</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-box text-center p-4">
+                        <i class="fas fa-users text-primary mb-3 fa-3x"></i>
+                        <h4>Індивідуальний підхід</h4>
+                        <p>Увага до потреб та здібностей кожного учня</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-box text-center p-4">
+                        <i class="fas fa-laptop text-primary mb-3 fa-3x"></i>
+                        <h4>Сучасні технології</h4>
+                        <p>Використання новітніх технологій у навчальному процесі</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-box text-center p-4">
+                        <i class="fas fa-globe text-primary mb-3 fa-3x"></i>
+                        <h4>Міжнародні програми</h4>
+                        <p>Участь у міжнародних освітніх проектах та обмінах</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Швидкі посилання</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Знайдіть потрібну інформацію про нашу школу</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-info-circle text-primary mb-3 fa-3x"></i>
+                            <h4>Про школу</h4>
+                            <p>Дізнайтеся більше про нашу історію, місію та цінності</p>
+                            <a href="{{ url_for('about') }}" class="btn btn-primary mt-3">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-graduation-cap text-primary mb-3 fa-3x"></i>
+                            <h4>Освітні програми</h4>
+                            <p>Ознайомтеся з нашими освітніми програмами та підходами</p>
+                            <a href="{{ url_for('programs') }}" class="btn btn-primary mt-3">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-quote-left text-primary mb-3 fa-3x"></i>
+                            <h4>Відгуки про школу</h4>
+                            <p>Ознайомтесь з відгуками, які надсилають учні, їх батьки та випускники</p>
+                            <a href="{{ url_for('testimonials') }}" class="btn btn-primary mt-3">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Останні новини</h2>
+                <div class="line mx-auto"></div>
+                <p class="lead">Будьте в курсі останніх подій нашої школи</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-primary">Новина</span>
+                                <small class="text-muted">10 вересня 2023</small>
+                            </div>
+                            <h5 class="card-title">Початок нового навчального року</h5>
+                            <p class="card-text">Урочиста лінійка з нагоди початку нового навчального року відбудеться 1 вересня о 9:00 на шкільному подвір'ї.</p>
+                            <a href="#" class="btn btn-outline-primary">Читати більше</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-success">Досягнення</span>
+                                <small class="text-muted">5 вересня 2023</small>
+                            </div>
+                            <h5 class="card-title">Перемога на олімпіаді з математики</h5>
+                            <p class="card-text">Учні нашої школи здобули перше місце на міській олімпіаді з математики. Вітаємо переможців!</p>
+                            <a href="#" class="btn btn-outline-primary">Читати більше</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-info">Анонс</span>
+                                <small class="text-muted">2 вересня 2023</small>
+                            </div>
+                            <h5 class="card-title">Набір до гуртків та секцій</h5>
+                            <p class="card-text">Розпочинається набір учнів до шкільних гуртків та спортивних секцій. Запрошуємо всіх бажаючих!</p>
+                            <a href="#" class="btn btn-outline-primary">Читати більше</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">Всі новини та події</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

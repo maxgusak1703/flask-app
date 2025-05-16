@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Додавання нового запису
+{% endblock %}
+
+{% block content %}
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2>Зв'яжіться з нами</h2>
+            <div class="line mx-auto"></div>
+            <p class="lead">Маєте запитання? Ми завжди раді допомогти!</p>
+        </div>
+        <div class="row">
+            
+            <!-- Contact Info -->
+            <div class="col-lg-5">
+                <div class="contact-info">
+                    <div class="contact-item mb-4 d-flex">
+                        <i class="fas fa-map-marker-alt text-primary me-3 fs-4"></i>
+                        <div>
+                            <h5>Адреса</h5>
+                            <p>вул. Шкільна, 123, м. Київ, 01001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item mb-4 d-flex">
+                        <i class="fas fa-phone-alt text-primary me-3 fs-4"></i>
+                        <div>
+                            <h5>Телефон</h5>
+                            <p>+380 44 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item mb-4 d-flex">
+                        <i class="fas fa-envelope text-primary me-3 fs-4"></i>
+                        <div>
+                            <h5>Email</h5>
+                            <p>info@znanniaschool.ua</p>
+                        </div>
+                    </div>
+                    <div class="contact-item d-flex">
+                        <i class="fas fa-clock text-primary me-3 fs-4"></i>
+                        <div>
+                            <h5>Години роботи</h5>
+                            <p>Пн-Пт: 8:00 - 17:00<br>Сб: 9:00 - 13:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Contact Form -->
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <form method="POST" class="bg-white p-4 rounded shadow-sm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="Ім'я" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="subject" placeholder="Тема" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Повідомлення" required></textarea>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Надіслати повідомлення</button>
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show mt-3" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрити"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

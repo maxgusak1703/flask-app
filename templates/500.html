@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Сторінку не знайдено - Школа "Знання"
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="error-code">500</h1>
+                    <div class="error-divider"></div>
+                    <h2 class="mb-4">Упс! Щось пішло не так</h2>
+                    <p class="error-text">Виникла помилка на сервері. Наші технічні спеціалісти вже працюють над вирішенням проблеми.</p>
+                    
+                    <div class="mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-home me-2"></i>Повернутися на головну
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p>Якщо проблема не зникає, будь ласка, зв'яжіться з нами:</p>
+                        <p><i class="fas fa-envelope me-2"></i>support@znanniaschool.ua</p>
+                        <p><i class="fas fa-phone-alt me-2"></i>+380 44 123 4567</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
