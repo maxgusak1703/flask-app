@@ -5,20 +5,28 @@
 ## Як запустити
 
 1. Клонування репозиторію
+```bash
+git clone
 
-git clone 
 cd flask-blog
-
+```
 2. Створення віртуального середовища
-
+```bash
 python -m venv venv
-# Windows:
+```
+- Windows:
+```bash
 venv\Scripts\activate
-# Linux/macOS:
+```
+- Linux/macOS:
+```bash
 source venv/bin/activate
-
+```
 3. Встановлення залежностей
+```bash
 pip install -r requirements.txt
-
+```
 4. Запуск застосунку
+```bash
 flask run
+```
