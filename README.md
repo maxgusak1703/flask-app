@@ -8,8 +8,7 @@
 
 1. Клонування репозиторію
 ```bash
-git clone
-
+git clone https://github.com/maxgusak1703/flask-app.git
 cd flask-blog
 ```
 2. Створення віртуального середовища
