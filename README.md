@@ -1,10 +1,13 @@
 # Проєкт "Школа знань"
 
-Це простий блог-застосунок, створений на Flask. Можна надсилати відгуки, а також деякі запитання, які зберігаються в БД
+Це простий блог-застосунок, створений на Flask. Є реєстрація, можна надсилати відгуки, а також деякі запитання, які зберігаються в БД.
 
-![image](https://github.com/user-attachments/assets/a92de9a5-47c4-4a66-b551-21b0f38286ef)
+![image](https://github.com/user-attachments/assets/54a9ed58-053a-42b9-9733-c67055ede6e4)
 
-![image](https://github.com/user-attachments/assets/a92de9a5-47c4-4a66-b551-21b0f38286ef)
+![image](https://github.com/user-attachments/assets/e8289eba-90b8-42cf-84e2-40bbe8131466)
+
+![image](https://github.com/user-attachments/assets/16bfc943-77f9-41c5-b790-472b4cf8b443)
+
 
 ## Як запустити
 
@@ -15,11 +18,7 @@ cd flask-app
 ```
 2. Створення віртуального середовища
 ```bash
-```bash
 python -m venv venv
-```
-- Windows:
-```bash
 ```
 - Windows:
 ```bash
@@ -27,20 +26,13 @@ venv\Scripts\activate
 ```
 - Linux/macOS:
 ```bash
-```
-- Linux/macOS:
-```bash
 source venv/bin/activate
-```
 ```
 3. Встановлення залежностей
 ```bash
-```bash
 pip install -r requirements.txt
 ```
-```
 4. Запуск застосунку
-```bash
 ```bash
 flask run
 ```
