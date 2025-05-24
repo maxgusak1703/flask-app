@@ -4,6 +4,8 @@
 
 ![image](https://github.com/user-attachments/assets/a92de9a5-47c4-4a66-b551-21b0f38286ef)
 
+![image](https://github.com/user-attachments/assets/a92de9a5-47c4-4a66-b551-21b0f38286ef)
+
 ## Як запустити
 
 1. Клонування репозиторію
@@ -13,7 +15,11 @@ cd flask-app
 ```
 2. Створення віртуального середовища
 ```bash
+```bash
 python -m venv venv
+```
+- Windows:
+```bash
 ```
 - Windows:
 ```bash
@@ -21,13 +27,20 @@ venv\Scripts\activate
 ```
 - Linux/macOS:
 ```bash
+```
+- Linux/macOS:
+```bash
 source venv/bin/activate
+```
 ```
 3. Встановлення залежностей
 ```bash
+```bash
 pip install -r requirements.txt
 ```
+```
 4. Запуск застосунку
+```bash
 ```bash
 flask run
 ```
