@@ -30,7 +30,7 @@
                                                 <td>{{ user.username }}</td>
                                                 <td>{{ user.email }}</td>
                                                 <td>{{ user.category }}</td>
-                                                <td>{{ user.created_at }}</td>
+                                                <td>{{ user.created_at | datetimeformat }}</td>
                                                 <td>{{ 'Так' if user.is_admin else 'Ні' }}</td>
                                                 <td>
                                                     {% if user.id != current_user.id %}
