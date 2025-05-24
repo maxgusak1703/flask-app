@@ -31,17 +31,20 @@
     background-color: #2e59d9;
     color: white;
 }
+
 .card-img-top {
     height: 220px;
     object-fit: cover;
     object-position: center;
 }
+
 .error-container {
     min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .error-code {
     font-size: 120px;
     font-weight: 700;
@@ -49,13 +52,67 @@
     line-height: 1;
     margin-bottom: 0;
 }
+
 .error-divider {
     width: 90px;
     height: 5px;
     background-color: #4e73df;
     margin: 30px auto;
 }
+
 .error-text {
     font-size: 22px;
     margin-bottom: 30px;
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.auth-logo i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fc;
+    padding: 20px;
+}
+
+.auth-card {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.auth-header {
+    background-color: #4e73df;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.auth-body {
+    padding: 30px;
+    background-color: white;
+}
+
+.auth-footer {
+    background-color: #f8f9fc;
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #e3e6f0;
+}
+
+.form-floating {
+    margin-bottom: 15px;
 }

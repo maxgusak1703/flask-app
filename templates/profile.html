@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Мій профіль - Школа "Знання"
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <h3 class="mb-3">Ваш профіль</h3>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                    <p class="card-text"><strong>Категорія:</strong> 
+                        {% if user.category == 'admin' %}Адміністратор
+                        {% elif user.category == 'parents' %}Батьки
+                        {% elif user.category == 'students' %}Учні
+                        {% elif user.category == 'graduates' %}Випускники
+                        {% endif %}
+                    </p>
+                    <p class="card-text"><strong>Дата реєстрації:</strong> {{ user.created_at | datetimeformat }}</p>
+                    {% if user.is_admin %}
+                        <p class="card-text text-success"><strong>Статус:</strong> Адміністратор</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h3 class="mb-3">Редагувати профіль</h3>
+            <form method="POST" action="">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Ім’я користувача</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Електронна пошта</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Категорія</label>
+                    <select class="form-select" id="category" name="category" required>
+                        <option value="admin" {% if user.category == 'admin' %}selected{% endif %}>Адміністратор</option>
+                        <option value="parents" {% if user.category == 'parents' %}selected{% endif %}>Батьки</option>
+                        <option value="students" {% if user.category == 'students' %}selected{% endif %}>Учні</option>
+                        <option value="graduates" {% if user.category == 'graduates' %}selected{% endif %}>Випускники</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Новий пароль (залиште порожнім, якщо не хочете змінювати)</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">Підтвердити новий пароль</label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                </div>
+                <button type="submit" class="btn btn-primary">Зберегти зміни</button>
+            </form><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Page Header -->
     <header class="page-header">
         <div class="overlay"></div>
         <div class="container">
@@ -23,7 +22,6 @@
         </div>
     </header>
 
-    <!-- Testimonials Introduction -->
     <section class="py-5">
         <div class="container">
             <div class="row">
@@ -39,8 +37,6 @@
         </div>
     </section>
 
-
-    <!-- Testimonials Filter -->
     <section class="py-3 bg-light">
         <div class="container">
             <div class="row">
@@ -56,20 +52,6 @@
         </div>
     </section>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="container mt-4">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-
-    <!-- Testimonials List -->
     <section class="py-5">
         <div class="container">
             <div class="row testimonials-container">
@@ -100,6 +82,7 @@
         </div>
     </section>
 
+    {% if current_user.is_authenticated %}
      <section class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
@@ -147,5 +130,6 @@
             </div>
         </div>
     </section>
-    
+    {% else %}
+    {% endif %}
 {% endblock %}

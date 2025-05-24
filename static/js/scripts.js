@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // ПОява кнопки "Повернутися на початок"
+    // Поява кнопки "Повернутися на початок"
     const backToTopButton = document.getElementById('backToTop');
     window.addEventListener('scroll', function() {
         if (window.pageYOffset > 70) {
