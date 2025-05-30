@@ -10,7 +10,8 @@ class User(db.Model, UserMixin):
     category = db.Column(db.String(20), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     is_admin = db.Column(db.Boolean, default=False)
-
+    profile_image = db.Column(db.String(120), nullable=True, default='uploads/default.jpg') 
+    
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
 

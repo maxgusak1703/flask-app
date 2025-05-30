@@ -1,7 +1,10 @@
+import os
 from flask import render_template, request, redirect, flash, url_for
 from flask_login import login_user, current_user, logout_user, login_required
 from app import app, db
 from models import User, ContactMessage, Testimonial
+from forms import RegistrationForm, LoginForm, ContactForm, TestimonialForm, ProfileForm
+from werkzeug.utils import secure_filename
 import bcrypt
 
 # Фільтр для форматування дати
@@ -20,6 +23,14 @@ from app import login_manager
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+def save_profile_image(form_file, username):
+    if not form_file:
+        return None
+    filename = secure_filename(f"{username}_{form_file.filename}")
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    form_file.save(filepath)
+    return f"uploads/{filename}"
 
 # Головні сторінки
 @app.route('/index')
@@ -40,87 +51,69 @@ def programs():
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
-        category = request.form.get('category')
-        confirm_password = request.form.get('confirm_password')
-
-        if not all([username, email, password, category, confirm_password]):
-            flash('Заповніть усі поля.', 'danger')
-        elif password != confirm_password:
-            flash('Паролі не співпадають.', 'danger')
-        elif User.query.filter_by(username=username).first():
-            flash('Це ім’я користувача вже зайнято.', 'danger')
-        elif User.query.filter_by(email=email).first():
-            flash('Ця електронна пошта вже використовується.', 'danger')
-        else:
-            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-            try:
-                user = User(username=username, email=email, category=category, password=hashed_password)
-                db.session.add(user)
-                db.session.commit()
-            except:
-                flash('Помилка при створенні облікового запису.', 'danger')
-            flash('Ваш обліковий запис створено!', 'success')
-            return redirect(url_for('login'))
-    return render_template('register.html')
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        try:
+            user = User(username=form.username.data, email=form.email.data, category=form.category.data, password=hashed_password)
+            db.session.add(user)
+            db.session.commit()
+        except:
+            flash('Помилка при створенні облікового запису.', 'danger')
+        flash('Ваш обліковий запис створено!', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
 
 # Логін
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+    form = LoginForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
 
         user = User.query.filter_by(email=email).first()
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
-            login_user(user)
+            login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('index'))
         else:
             flash('Невірна електронна пошта або пароль.', 'danger')
-    return render_template('login.html', title='Вхід')
+
+    return render_template('login.html', form=form)
 
 # Профіль
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-        category = request.form.get('category')
-        password = request.form.get('password')
-        confirm_password = request.form.get('confirm_password')
-
-        if not all([username, email, category]):
-            flash('Заповніть ім’я користувача, email та категорію.', 'danger')
-        elif username != current_user.username and User.query.filter_by(username=username).first():
-            flash('Це ім’я користувача вже зайнято.', 'danger')
-        elif email != current_user.email and User.query.filter_by(email=email).first():
-            flash('Ця електронна пошта вже використовується.', 'danger')
-        elif category not in ['admin', 'parents', 'students', 'graduates']:
-            flash('Невірна категорія.', 'danger')
-        else:
-            current_user.username = username
-            current_user.email = email
-            current_user.category = category
-
-            if password or confirm_password:
-                if password != confirm_password:
-                    flash('Паролі не співпадають.', 'danger')
-                else:
-                    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-                    current_user.password = hashed_password
-
-            db.session.commit()
-            flash('Профіль оновлено!', 'success')
+    form = ProfileForm()
+    if not current_user.is_authenticated:
+        flash('Вам потрібно увійти, щоб отримати доступ до профілю.', 'warning')
+        return redirect(url_for('login'))
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        current_user.category = form.category.data
+        if not current_user.is_admin:
+            flash('Ви не маєте прав для зміни категорії на "Адміністратор".', 'danger')
             return redirect(url_for('profile'))
-
-    return render_template('profile.html', title='Профіль', user=current_user)
+        if form.password.data:
+            hashed_password = bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            current_user.password = hashed_password
+        if form.profile_image.data:
+            profile_image = save_profile_image(form.profile_image.data, current_user.username)
+            if profile_image:
+                current_user.profile_image = profile_image
+        db.session.commit()
+        flash('Профіль оновлено!', 'success')
+        return redirect(url_for('profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        form.category.data = current_user.category
+    return render_template('profile.html', title='Мій профіль - Школа "Знання"', form=form, user=current_user)
 
 # Вихід
 @app.route('/logout')
@@ -132,54 +125,43 @@ def logout():
 # Контакти
 @app.route('/contacts', methods=['GET', 'POST'])
 def contacts():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        subject = request.form.get('subject')
-        message = request.form.get('message')
-
-        if not all([name, email, subject, message]):
-            flash('Заповніть усі поля.', 'danger')
-        else:
-            try:
-                new_message = ContactMessage(name=name, email=email, subject=subject, message=message)
-                db.session.add(new_message)
-                db.session.commit()
-                flash('Ваше повідомлення надіслано успішно!', 'success')
-            except Exception as e:
-                flash(f'Помилка: {str(e)}', 'danger')
+    form = ContactForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        subject = form.subject.data
+        message = form.message.data
+        try:
+            new_message = ContactMessage(name=name, email=email, subject=subject, message=message)
+            db.session.add(new_message)
+            db.session.commit()
+            flash('Ваше повідомлення надіслано успішно!', 'success')
+        except Exception as e:
+            flash(f'Помилка: {str(e)}', 'danger')
         return redirect(url_for('contacts'))
-    return render_template('contacts.html', title='Контакти')
+    return render_template('contacts.html', title='Контакти', form=form)
 
 # Відгуки
 @app.route('/testimonials', methods=['GET', 'POST'])
 def testimonials():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        category = request.form.get('category')
-        testimonial = request.form.get('testimonial')
-
-        if not all([name, email, category, testimonial]):
-            flash('Будь ласка, заповніть усі обов’язкові поля.', 'danger')
-        else:
-            try:
-                new_testimonial = Testimonial(
-                    name=name,
-                    email=email,
-                    category=category,
-                    text=testimonial,
-                    is_approved=False 
-                )
-                db.session.add(new_testimonial)
-                db.session.commit()
-                flash('Відгук надіслано на модерацію.', 'success')
-            except Exception as e:
-                flash(f'Помилка: {str(e)}', 'danger')
+    form = TestimonialForm()
+    if form.validate_on_submit():
+        try:
+            new_testimonial = Testimonial(
+                name=form.name.data,
+                email=form.email.data,
+                category=form.category.data,
+                text=form.text.data,
+                is_approved=False
+            )
+            db.session.add(new_testimonial)
+            db.session.commit()
+            flash('Відгук надіслано на модерацію.', 'success')
+        except Exception as e:
+            flash(f'Помилка: {str(e)}', 'danger')
         return redirect(url_for('testimonials'))
     testimonials = Testimonial.query.filter_by(is_approved=True).order_by(Testimonial.created_at.desc()).all()
-    return render_template('testimonials.html', title='Відгуки', testimonials=testimonials)
-
+    return render_template('testimonials.html', title='Відгуки', testimonials=testimonials, form=form)
 
 # Адмін-панель
 @app.route('/admin', methods=['GET'])

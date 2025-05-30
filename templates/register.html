@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+  {% extends 'base.html' %}
 
-{% block title %}
-    Реєстрація - Школа "Знання"
-{% endblock %}
+    {% block title %}
+        Реєстрація - Школа "Знання"
+    {% endblock %}
 
-{% block content %}
-<div class="auth-container">
+    {% block content %}
+    <div class="auth-container">
         <div class="auth-card">
             <div class="auth-header">
                 <div class="auth-logo">
@@ -15,44 +15,69 @@
                 <h5 class="mb-0">Створення нового облікового запису</h5>
             </div>
             <div class="auth-body">
-                <form id="registerForm" method="POST">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="name" name="username" placeholder="Ім'я" required>
-                            <label for="firstName">Ім'я</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="category" class="form-label">Категорія</label>
-                                <select class="form-select" id="category" name="category" required>
-                                    <option value="" selected disabled>Оберіть категорію</option>
-                                    <option value="parents">Батьки</option>
-                                    <option value="students">Учні</option>
-                                    <option value="graduates">Випускники</option>
-                                </select>
-                        </div>
-                        <div class="form-floating position-relative">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
-                            <label for="password">Пароль</label>
-                        </div>                    
-                        <div class="form-floating position-relative">
-                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Підтвердження паролю" required>
-                            <label for="confirmPassword">Підтвердження паролю</label>
-                        </div>
-                        <div class="form-check mb-4 mt-3">
-                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
-                            <label class="form-check-label" for="termsCheck">
-                                Я погоджуюсь з <a href="#" class="text-decoration-none">умовами використання</a> та <a href="#" class="text-decoration-none">політикою конфіденційності</a>
-                            </label>
-                        </div>
-                            <button type="submit" class="btn btn-primary w-100 py-2">Зареєструватися</button>
+                <form id="registerForm" method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="form-floating">
+                        {{ form.username(class="form-control", id="name", placeholder="Ім’я") }}
+                        {{ form.username.label(for="name") }}
+                        {% if form.username.errors %}
+                            {% for error in form.username.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="form-floating">
+                        {{ form.email(class="form-control", id="email", placeholder="Email") }}
+                        {{ form.email.label(for="email") }}
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.category.label(class="form-label") }}
+                        {{ form.category(class="form-select", id="category") }}
+                        {% if form.category.errors %}
+                            {% for error in form.category.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="form-floating position-relative">
+                        {{ form.password(class="form-control", id="password", placeholder="Пароль") }}
+                        {{ form.password.label(for="password") }}
+                        {% if form.password.errors %}
+                            {% for error in form.password.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="form-floating position-relative">
+                        {{ form.confirm_password(class="form-control", id="confirmPassword", placeholder="Підтвердження паролю") }}
+                        {{ form.confirm_password.label(for="confirmPassword") }}
+                        {% if form.confirm_password.errors %}
+                            {% for error in form.confirm_password.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    {{ form.submit(class="btn btn-primary w-100 py-2") }}
                 </form>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show mt-3" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрити"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
             </div>
-                <div class="auth-footer">
-                    <p class="mb-0">Вже маєте акаунт? <a href="{{ url_for('login') }}" class="text-decoration-none">Увійти</a></p>
-                </div>
+            <div class="auth-footer">
+                <p class="mb-0">Вже маєте акаунт? <a href="{{ url_for('login') }}" class="text-decoration-none">Увійти</a></p>
+            </div>
         </div>
     </div>
 {% endblock %}

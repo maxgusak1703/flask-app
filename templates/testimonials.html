@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    Відгуки - Школа "Знання"
-{% endblock %}
+    {% block title %}
+        Відгуки - Школа "Знання"
+    {% endblock %}
 
-{% block content %}
+    {% block content %}
     <header class="page-header">
         <div class="overlay"></div>
         <div class="container">
@@ -68,7 +68,7 @@
                                     {% elif testimonial.category == 'graduates' %}Випускник
                                     {% endif %}
                                 </p>
-                                <p class="text-muted small ">{{ testimonial.created_at | datetimeformat }}</p>
+                                <p class="text-muted small">{{ testimonial.created_at | datetimeformat }}</p>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
     </section>
 
     {% if current_user.is_authenticated %}
-     <section class="py-5 bg-light">
+    <section class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -95,34 +95,49 @@
                                 <p>Ми будемо вдячні за ваш відгук про нашу школу</p>
                             </div>
                             <form method="POST" action="{{ url_for('testimonials') }}">
+                               {{ form.hidde n_tag() }}
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="name" class="form-label">Ім'я та прізвище</label>
-                                        <input type="text" class="form-control" id="name" name="name" required>
+                                        {{ form.name.label(class="form-label") }}
+                                        {{ form.name(class="form-control") }}
+                                        {% if form.name.errors %}
+                                            {% for error in form.name.errors %}
+                                                <span class="text-danger">{{ error }}</span>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        {{ form.email.label(class="form-label") }}
+                                        {{ form.email(class="form-control") }}
+                                        {% if form.email.errors %}
+                                            {% for error in form.email.errors %}
+                                                <span class="text-danger">{{ error }}</span>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="category" class="form-label">Категорія</label>
-                                    <select class="form-select" id="category" name="category" required>
-                                        <option value="" selected disabled>Оберіть категорію</option>
-                                        <option value="parents">Батьки</option>
-                                        <option value="students">Учні</option>
-                                        <option value="graduates">Випускники</option>
-                                    </select>
+                                    {{ form.category.label(class="form-label") }}
+                                    {{ form.category(class="form-select") }}
+                                    {% if form.category.errors %}
+                                        {% for error in form.category.errors %}
+                                            <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                                 <div class="mb-3">
-                                    <label for="testimonial" class="form-label">Ваш відгук</label>
-                                    <textarea class="form-control" id="testimonial" name="testimonial" rows="5" required></textarea>
+                                    {{ form.text.label(class="form-label") }}
+                                    {{ form.text(class="form-control", rows=5) }}
+                                    {% if form.text.errors %}
+                                        {% for error in form.text.errors %}
+                                            <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
+                                <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
                                     <label class="form-check-label" for="consent">Я даю згоду на обробку моїх персональних даних та публікацію відгуку на сайті</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100">Надіслати відгук</button>
+                                {{ form.submit(class="btn btn-primary w-100") }}
                             </form>
                         </div>
                     </div>
@@ -130,6 +145,5 @@
             </div>
         </div>
     </section>
-    {% else %}
     {% endif %}
-{% endblock %}
+    {% endblock %}

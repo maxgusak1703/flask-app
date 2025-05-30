@@ -34,10 +34,9 @@
                                                 <td>{{ 'Так' if user.is_admin else 'Ні' }}</td>
                                                 <td>
                                                     {% if user.id != current_user.id %}
-                                                        <a href="{{ url_for('toggle_admin', user_id=user.id) }}" class="btn btn-primary btn-sm">&nbsp;
-                                                            {{ 'Зняти права' if user.is_admin else 'Призначити адміном' }} 
+                                                        <a href="{{ url_for('toggle_admin', user_id=user.id) }}" class="btn btn-primary btn-sm">
+                                                            {{ 'Зняти права' if user.is_admin else 'Призначити адміном' }}</a>&nbsp; 
                                                         <a href="{{ url_for('delete_user', user_id=user.id) }}" class="btn btn-danger btn-sm">Видалити</a>
-                                                        </a>
                                                     {% else %}
                                                         <span class="text-muted">Власний профіль</span>
                                                     {% endif %}

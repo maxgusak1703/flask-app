@@ -36,3 +36,4 @@ pip install -r requirements.txt
 ```bash
 flask run
 ```
+В базі вже є один адміністратор: login - admin@gmail.com, pass - admin
